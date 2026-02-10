@@ -1,6 +1,9 @@
+import java.util.Queue;
+import java.util.LinkedList;
+
 class MyStack {
-    private Queue<Integer> q1;
-    private Queue<Integer> q2;
+    Queue<Integer> q1;
+    Queue<Integer> q2;
 
     public MyStack() {
         q1=new LinkedList<>();
@@ -8,16 +11,15 @@ class MyStack {
     }
     
     public void push(int x) {
-        q2.offer(x);
+        q2.add(x);
         while(!q1.isEmpty())
         {
-            q2.offer(q1.poll());
+            q2.add(q1.poll());
         }
         Queue<Integer> temp=q1;
         q1=q2;
         q2=temp;
-        q2.clear();
-    }
+        }
     
     public int pop() {
         return q1.poll();
